@@ -45,7 +45,7 @@ module Saulabs::EmbedAssets
       css.gsub(EMBED_DETECTOR) do |url|
         asset_path = Pathname.new($1)
         public_path = absolute_path(asset_path)
-        if URI.parse($1).absolute? || !embeddable?(public_path)
+        if URI.parse($1).absolute?
           "url(#{$1})"
         else
           "url(\"data:#{mime_type($1)};charset=utf-8;base64,#{encoded_contents(public_path.to_s)}\")"
