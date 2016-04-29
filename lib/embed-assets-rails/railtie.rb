@@ -3,7 +3,7 @@ module Saulabs::EmbedAssets
 
     initializer "saulabs.sprockets.embed_assets", :after => 'sprockets.environment' do 
       Rails.application.config.assets.embed_assets = false if app.config.assets.embed_assets.nil?
-      Rails.application.assets.register_bundle_processor 'text/css', Saulabs::EmbedAssets::Processor
+      Rails.application.config.assets.register_bundle_processor 'text/css', Saulabs::EmbedAssets::Processor
     end
 
   end
